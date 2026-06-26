@@ -1,0 +1,2 @@
+"""QueueStorm Investigator FastAPI service."""
+
