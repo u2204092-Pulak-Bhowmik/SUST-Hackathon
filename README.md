@@ -6,6 +6,8 @@ FastAPI service for the SUST CSE Carnival 2026 QueueStorm Investigator prelimina
 
 - `GET /health` returns `{"status":"ok"}`
 - `POST /analyze-ticket` accepts one ticket and returns the required structured investigation response.
+- `GET /api-docs` opens Swagger UI for interactive testing.
+- `GET /redoc` opens ReDoc for API schema browsing.
 
 ## Tech Stack
 

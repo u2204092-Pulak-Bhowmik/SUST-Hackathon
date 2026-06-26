@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from fastapi import FastAPI
 from fastapi.exceptions import RequestValidationError
+from fastapi.openapi.docs import get_swagger_ui_html
 from fastapi.responses import JSONResponse
 
 from app.models import AnalysisResponse, TicketRequest
@@ -41,7 +42,14 @@ async def health() -> dict[str, str]:
     return {"status": "ok"}
 
 
+@app.get("/api-docs", include_in_schema=False)
+async def api_docs():
+    return get_swagger_ui_html(
+        openapi_url=app.openapi_url,
+        title=f"{app.title} - Swagger UI",
+    )
+
+
 @app.post("/analyze-ticket", response_model=AnalysisResponse)
 async def analyze_ticket_endpoint(request: TicketRequest) -> AnalysisResponse:
     return analyze_ticket(request)
-
